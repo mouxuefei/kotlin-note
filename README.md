@@ -1,5 +1,5 @@
 # kotlin-note
-### kotlin的带参构造集成
+#### kotlin的带参构造集成
 ```
 open class Father(var int:Int,var data:ArrayList<String>){
     fun show(){
@@ -12,7 +12,7 @@ class Son(var data2:ArrayList<String>):Father(100,data2){
 }
 ```
 
-### 我们可以给参数指定一个默认值使得它们变得可选，这是非常有帮助的。这里有一个例子，在Activity中创建了一个函数用来toast一段信息：
+#### 我们可以给参数指定一个默认值使得它们变得可选，这是非常有帮助的。这里有一个例子，在Activity中创建了一个函数用来toast一段信息：
 ```
 fun toast(message: String, length: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, length).show()
@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
 }
   
 ```
-### 操作符表
+#### 操作符表
 * 一元操作符
 
 操作符 | 函数
@@ -79,7 +79,7 @@ a(i) | a.invoke(i)
 a(i, j) | a.invoke(i, j)
 a(i_1, ..., i_n) | a.invoke(i_1, ..., i_n)
 
-### let 首先let()的定义是这样的，默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return
+#### let 首先let()的定义是这样的，默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return
 ```
 fun testLet(): Int {
     // fun <T, R> T.let(f: (T) -> R): R { f(this)}
@@ -95,7 +95,7 @@ fun testLet(): Int {
 //testLet
 //testLet
 ```
-### apply  apply函数是这样的，调用某对象的apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象
+#### apply  apply函数是这样的，调用某对象的apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象
 ```
 fun testApply() {
     // fun <T> T.apply(f: T.() -> Unit): T { f(); return this }
@@ -112,7 +112,7 @@ fun testApply() {
 // [testApply, testApply, testApply]
 ```
 
-### with函数是一个单独的函数，并不是Kotlin中的extension，返回的是最后一行，然后可以直接调用对象的方法，感觉像是let和apply结合。
+#### with函数是一个单独的函数，并不是Kotlin中的extension，返回的是最后一行，然后可以直接调用对象的方法，感觉像是let和apply结合。
 ```
 fun testWith() {
     // fun <T, R> with(receiver: T, f: T.() -> R): R = receiver.f()
@@ -128,7 +128,7 @@ fun testWith() {
 // kotlin.Unit
 ```
 
-### run函数和apply函数很像，只不过run函数是使用最后一行的返回，apply返回当前自己的对象。
+#### run函数和apply函数很像，只不过run函数是使用最后一行的返回，apply返回当前自己的对象。
 
 ```
 fun testRun() {
@@ -142,7 +142,7 @@ fun testRun() {
 // kotlin.Unit
 ```
 
-### kotlin的函数式编程
+#### kotlin的函数式编程
 写个简单的接口回调
 ```
 fun main(args: Array<String>) {
@@ -163,7 +163,7 @@ class FunctionDemo {
 class son2(var age: Int) {}
 ```
 
-### 抽象方法的函数式编程以及调用
+#### 抽象方法的函数式编程以及调用
 ```
 fun main(args: Array<String>) {
     val demo2 = Demo2(show = {
@@ -204,5 +204,18 @@ class Demo3 : Demo() {
         int + 10
     }
 
+}
+```
+#### Applicaton单例化
+```
+class App : Application() {
+companion object {
+private var instance: Application? = null
+fun instance() = instance!!
+}
+override fun onCreate() {
+super.onCreate()
+instance = this
+}
 }
 ```
