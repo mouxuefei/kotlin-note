@@ -211,4 +211,44 @@ class App : Application() {
         instance = this
     }
 }
+    class App : Application() {
+        companion object {
+            var instance: App by Delegates.notNull()
+        }
+        override fun onCreate() {
+            super.onCreate()
+            instance = this
+        }
+    }
 ```
+
+
+#### 从Map中映射值
+
+desc:属性的值会从一个map中获取value，属性的名字对应这个map中的key。这个委托可以让我们做一些很强大的事情，因为我们可以很简
+单地从一个动态地map中创建一个对象实例。如果我们importkotlin.properties.getValue  ，我们可以从构造函数映射到 val  属性来得到
+一个不可修改的map。如果我们想去修改map和属性，我们也可以importkotlin.properties.setValue  。类需要一个 MutableMap  作为构造函数的参
+数。
+```
+fun main(args: Array<String>) {
+    val hashMap= mapOf(
+            "width" to 1080,
+            "height" to 720,
+            "dp" to 240,
+            "deviceName" to "mydevice"
+    )
+    val configuration = Phone(map = hashMap)
+    println("deviceName=${configuration.deviceName}+dp=${configuration.dp}+width=${configuration.width}+height=${configuration.height}")
+}
+
+
+
+class Phone(map: Map<String, Any?>) {
+    val width: Int by map
+    val height: Int by map
+    val dp: Int by map
+    val deviceName: String by map
+}
+```
+
+
