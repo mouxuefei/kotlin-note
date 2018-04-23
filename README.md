@@ -174,19 +174,13 @@ fun main(args: Array<String>) {
         show(10)
         val num = show2(30)
         print("num=${num}")
-
-
     }
-
     val demo3 = Demo3().apply {
         show(20)
         val show2 = show2(30)
         print("num=${show2}")
     }
-
-
 }
-
 
 abstract class Demo {
     abstract var show: (int: Int) -> Unit
@@ -203,19 +197,18 @@ class Demo3 : Demo() {
     override var show2 = { int: Int ->
         int + 10
     }
-
 }
 ```
 #### Applicaton单例化
 ```
 class App : Application() {
-companion object {
-private var instance: Application? = null
-fun instance() = instance!!
-}
-override fun onCreate() {
-super.onCreate()
-instance = this
-}
+    companion object {
+        private var instance: Application? = null
+        fun instance() = instance!!
+    }
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+    }
 }
 ```
