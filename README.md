@@ -63,3 +63,10 @@ a[i_1, ..., i_n] | a.get(i_1, ..., i_n)
 a[i] = b | a.set(i, b)
 a[i, j] = b | a.set(i, j, b)
 a[i_1, ..., i_n] = b | a.set(i_1, ..., i_n, b)
+
+* 等于操作符
+
+操作符 | 函数
+---- | ---
+a == b | a?.equals(b) ?: b === null
+a != b | !(a?.equals(b) ?: b === null)
