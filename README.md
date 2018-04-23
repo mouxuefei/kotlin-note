@@ -70,3 +70,11 @@ a[i_1, ..., i_n] = b | a.set(i_1, ..., i_n, b)
 ---- | ---
 a == b | a?.equals(b) ?: b === null
 a != b | !(a?.equals(b) ?: b === null)
+
+* 函数调用
+
+方法 | 调用
+---- | ---
+a(i) | a.invoke(i)
+a(i, j) | a.invoke(i, j)
+a(i_1, ..., i_n) | a.invoke(i_1, ..., i_n)
